@@ -1,15 +1,14 @@
-pipeline {
-    agent {
+node {
+    stage('Docker') {
         docker {
             image 'node:16-buster-slim' 
             args '-p 3000:3000' 
         }
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install' 
-            }
+    
+    stage('Build') { 
+        steps {
+            sh 'npm install' 
         }
     }
 }
